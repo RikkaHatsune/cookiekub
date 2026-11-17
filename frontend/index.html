@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cookiekub-api.onrender.com; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="CookieKub — тёплая пекарня-симулятор. Выберите печеньки, примените промокод и оформите вымышленный заказ.">
+<title>CookieKub — печеньки, которые не нужно печь</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+<a class="skip-link" href="#main">К содержимому</a>
+<div id="site-header"></div>
+<main id="main">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Пекарня-симулятор · с 2026 года</span>
+        <h1>Печеньки, которые <span class="accent">не нужно печь</span></h1>
+        <p class="hero-lead">Двенадцать характеров, три кафе и один очень честный симулятор заказа. Выбирайте, применяйте промокод и наблюдайте, как печеньки «пекутся» ровно 60 секунд.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="catalog.html">Выбрать печеньки</a>
+          <a class="btn btn-ghost" href="#how">Как это работает</a>
+        </div>
+        <div class="hero-notes">
+          <span><i class="dot"></i> Без реальной оплаты</span>
+          <span><i class="dot"></i> Гость тоже может заказать</span>
+          <span><i class="dot"></i> 3 кафе в городке</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="assets/hero.svg" alt="Стопка печенья CookieKub">
+        <div class="hero-badge">сегодня печём <b>с 9:00</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="popular">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Свежая партия</span>
+          <h2>Что чаще всего заказывают</h2>
+          <p>Хиты, которые разбирают быстрее всего. Цены — как в учебном симуляторе: настоящие только эмоции.</p>
+        </div>
+        <a class="btn btn-ghost btn-sm" href="catalog.html">Весь каталог</a>
+      </div>
+      <div class="product-grid" id="popular-grid">
+        <div class="skeleton loading-card"></div><div class="skeleton loading-card"></div><div class="skeleton loading-card"></div><div class="skeleton loading-card"></div><div class="skeleton loading-card"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="how">
+    <div class="container">
+      <div class="panel" style="background:linear-gradient(135deg,#fffaf0,#fdf0dc);border-color:#e8c88f">
+        <div class="section-head" style="margin-bottom:18px">
+          <div>
+            <span class="eyebrow">Как это работает</span>
+            <h2 style="margin-bottom:6px">Три шага до тёплого печенья</h2>
+          </div>
+          <span class="badge amber">честная симуляция</span>
+        </div>
+        <div class="steps-grid">
+          <div>
+            <div class="status-icon" style="background:#fff;color:var(--caramel)">1</div>
+            <h3 style="margin-top:12px">Соберите корзину</h3>
+            <p class="small muted" style="margin:0">Добавьте печеньки и проверьте итог. Промокод пересчитает сумму на сервере — без фокусов.</p>
+          </div>
+          <div>
+            <div class="status-icon" style="background:#fff;color:var(--caramel)">2</div>
+            <h3 style="margin-top:12px">Выберите получение</h3>
+            <p class="small muted" style="margin:0">Самовывоз из одного из трёх кафе или доставка. Гостю достаточно email и телефона.</p>
+          </div>
+          <div>
+            <div class="status-icon" style="background:#fff;color:var(--caramel)">3</div>
+            <h3 style="margin-top:12px">Смотрите, как печётся</h3>
+            <p class="small muted" style="margin:0">Заказ получает статус «В обработке», а через 60 секунд становится «Выполнен». Или админ завершит раньше.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Наши точки</span>
+          <h2>Три кафе в маленьком городке</h2>
+          <p>Печём на Садовой, у Парка и на Набережной. Выберите точку — карта на странице заказа покажет, открыта ли она.</p>
+        </div>
+        <a class="btn btn-ghost btn-sm" href="support.html">Как добраться</a>
+      </div>
+      <div class="cafe-grid" id="cafes-grid">
+        <div class="skeleton loading-card" style="height:180px"></div><div class="skeleton loading-card" style="height:180px"></div><div class="skeleton loading-card" style="height:180px"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="panel" style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;background:var(--choco);color:#f6e7d2;border-color:var(--choco)">
+        <div style="flex:1;min-width:240px">
+          <span class="eyebrow" style="color:#f3d7b6">Промокод для первого заказа</span>
+          <h2 style="color:#fff7e8;margin-bottom:6px">FIRST15 — минус 15%</h2>
+          <p style="margin:0;color:#e9d5bd;font-size:0.9rem">От 500 ₽. Введите в корзине — и сумма пересчитается. Ещё есть COOKIE10 и SWEET500.</p>
+        </div>
+        <a class="btn btn-accent" href="catalog.html">Попробовать</a>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="js/config.js" defer></script>
+<script src="js/api.js" defer></script>
+<script src="js/common.js" defer></script>
+<script src="js/index.js" defer></script>
+</body>
+</html>

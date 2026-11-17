@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Кокос-лимон">
+<defs>
+  <radialGradient id="g" cx="38%" cy="32%" r="78%">
+    <stop offset="0" stop-color="#F0D9A8"/><stop offset="1" stop-color="#D9B96E"/>
+  </radialGradient>
+  <filter id="s" x="-30%" y="-30%" width="160%" height="170%">
+    <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#5A3421" flood-opacity="0.22"/>
+  </filter>
+</defs>
+<path d="M100 26 C132 20 162 38 170 70 C178 102 168 138 142 158 C116 178 78 174 54 154 C30 134 22 100 34 70 C44 44 72 32 100 26 Z" fill="url(#g)" filter="url(#s)"/>
+<path d="M100 44 C128 40 150 56 156 82 C162 108 150 136 128 148 C106 160 78 156 60 140 C42 124 38 96 50 74 C60 56 78 46 100 44 Z" fill="#FFF4DF" opacity="0.20"/>
+<circle cx="68" cy="90" r="6" fill="#E8B93A" opacity="0.9"/><circle cx="66" cy="88" r="2" fill="#fff" opacity="0.25"/>
+<circle cx="112" cy="68" r="6" fill="#E8B93A" opacity="0.9"/><circle cx="110" cy="66" r="2" fill="#fff" opacity="0.25"/>
+<circle cx="142" cy="96" r="6" fill="#E8B93A" opacity="0.9"/><circle cx="140" cy="94" r="2" fill="#fff" opacity="0.25"/>
+<circle cx="84" cy="130" r="6" fill="#E8B93A" opacity="0.9"/><circle cx="82" cy="128" r="2" fill="#fff" opacity="0.25"/>
+<circle cx="126" cy="144" r="6" fill="#E8B93A" opacity="0.9"/><circle cx="124" cy="142" r="2" fill="#fff" opacity="0.25"/>
+<path d="M42 64 C50 48 66 38 84 34" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity="0.28" fill="none"/>
+<circle cx="64" cy="56" r="4" fill="#fff" opacity="0.35"/>
+</svg>

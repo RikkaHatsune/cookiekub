@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cookiekub-api.onrender.com; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Страница заказа CookieKub: статус, состав, кафе самовывоза, карта и контакты.">
+<title>Заказ — CookieKub</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="order">
+<a class="skip-link" href="#main">К содержимому</a>
+<div id="site-header"></div>
+<main id="main">
+  <section class="section-tight order-shell">
+    <div class="container">
+      <div id="order-loading" class="panel" style="max-width:640px;margin:0 auto">
+        <div class="skeleton" style="height:22px;width:140px;margin-bottom:14px"></div>
+        <div class="skeleton" style="height:44px;width:70%;margin-bottom:16px"></div>
+        <div class="skeleton" style="height:90px"></div>
+      </div>
+
+      <div id="order-lookup" class="guest-lookup" hidden>
+        <div class="panel">
+          <span class="eyebrow">KubanoID · гостевой доступ</span>
+          <h1 style="font-size:1.7rem;margin-bottom:6px">Проверить заказ</h1>
+          <p class="muted">Введите номер заказа и email, который указали при оформлении. Так мы не покажем заказ чужому человеку.</p>
+          <form id="lookup-form" novalidate>
+            <div class="form-grid">
+              <div class="field"><label for="lookup-number">Номер заказа</label><input class="input" id="lookup-number" placeholder="CK-20261118-0001" autocomplete="off"></div>
+              <div class="field"><label for="lookup-email">Email</label><input class="input" id="lookup-email" type="email" placeholder="you@example.com" autocomplete="email"></div>
+            </div>
+            <p class="form-error" id="lookup-error" role="alert"></p>
+            <div class="cluster" style="margin-top:6px">
+              <button class="btn btn-primary" type="submit">Открыть заказ</button>
+              <a class="btn btn-ghost" href="catalog.html">В каталог</a>
+            </div>
+          </form>
+        </div>
+        <div id="guest-history-block" class="panel" style="margin-top:16px" hidden>
+          <div class="panel-title"><h3 style="font-size:1rem">Заказы на этом устройстве</h3><button class="btn btn-ghost btn-sm" type="button" id="clear-history">Очистить</button></div>
+          <div class="history-list" id="guest-history"></div>
+        </div>
+      </div>
+
+      <div id="order-content" hidden>
+        <div class="success-banner" id="success-banner" role="status">
+          <div class="icon-wrap" id="success-icon"></div>
+          <div><strong>Заказ оформлен!</strong><span id="success-text">Печеньки уже в печи. Номер заказа — ниже.</span></div>
+          <button class="btn btn-ghost btn-sm" type="button" id="banner-close">Скрыть</button>
+        </div>
+
+        <div class="order-grid">
+          <div>
+            <section class="status-card" id="status-card">
+              <div class="status-top">
+                <div class="status-icon" id="status-icon"></div>
+                <div style="flex:1;min-width:0">
+                  <div class="cluster" style="justify-content:space-between">
+                    <span class="status-pill" id="status-pill"></span>
+                    <span class="muted" style="font-size:.76rem" id="order-number-top"></span>
+                  </div>
+                  <h1 id="status-title">Заказ</h1>
+                  <p class="status-sub" id="status-sub"></p>
+                </div>
+              </div>
+              <div class="timeline" id="timeline">
+                <div class="tl-step" data-step="paid">Оплачен</div>
+                <div class="tl-step" data-step="cooking">Готовится</div>
+                <div class="tl-step" data-step="ready">Готов</div>
+              </div>
+              <div class="cluster" style="justify-content:space-between;margin-top:12px">
+                <span class="countdown" id="countdown" hidden>Готовность через <b>60</b> сек</span>
+                <button class="btn btn-ghost btn-sm" type="button" id="refresh-order">Обновить</button>
+              </div>
+              <div class="order-meta" id="order-meta"></div>
+            </section>
+
+            <section class="panel order-section" id="details-panel">
+              <details open>
+                <summary style="cursor:pointer;font-family:var(--font-display);font-weight:700;font-size:1.05rem">Детали заказа <span class="muted" style="font-family:var(--font-body);font-weight:500;font-size:.8rem">— состав, получение и оплата</span></summary>
+                <div style="margin-top:14px" id="details-body"></div>
+              </details>
+            </section>
+
+            <section class="panel order-section" id="cafe-panel">
+              <div class="panel-title"><h2 style="font-size:1.05rem">Кафе CookieKub</h2><span class="open-pill" id="cafe-pill"></span></div>
+              <div id="cafe-body"></div>
+              <a class="btn btn-ghost btn-sm" href="support.html" style="margin-top:12px">Связаться с поддержкой</a>
+            </section>
+
+            <section class="panel order-section" id="map-panel">
+              <div class="panel-title"><h2 style="font-size:1.05rem">Карта города</h2><span class="muted" style="font-size:.75rem">вымышленный городок</span></div>
+              <div class="map-wrap" id="map-wrap">
+                <img src="assets/map.svg" alt="Карта городка CookieKub с тремя кафе">
+              </div>
+              <div class="map-legend">
+                <span><i class="legend-dot"></i> открыто</span>
+                <span><i class="legend-dot berry"></i> закрыто</span>
+                <span><i class="legend-dot caramel"></i> выбранное кафе</span>
+              </div>
+              <p class="muted" id="map-hint" style="font-size:.8rem;margin:8px 0 0">Нажмите на маркер, чтобы увидеть адрес и часы.</p>
+            </section>
+          </div>
+
+          <aside>
+            <section class="panel">
+              <h2 style="font-size:1.05rem;margin-bottom:12px">Состав</h2>
+              <div id="order-items"></div>
+              <div class="summary-row" style="margin-top:8px"><span>Товары</span><span id="sum-subtotal">0 ₽</span></div>
+              <div class="summary-row discount" id="sum-discount-row" hidden><span>Скидка <span id="sum-promo-label"></span></span><span id="sum-discount">0 ₽</span></div>
+              <div class="summary-total"><span>Итого</span><span id="sum-total">0 ₽</span></div>
+              <div style="display:grid;gap:8px;margin-top:14px">
+                <a class="btn btn-primary btn-block" href="catalog.html">Заказать ещё</a>
+                <a class="btn btn-ghost btn-block" href="support.html">Проблема с заказом?</a>
+              </div>
+            </section>
+            <section class="panel" style="margin-top:16px">
+              <div class="panel-title"><h2 style="font-size:1rem">Оплата</h2><span class="badge blue">симуляция</span></div>
+              <div id="payment-body" class="small muted"></div>
+            </section>
+          </aside>
+        </div>
+
+        <section class="panel" id="guest-history-content" style="margin-top:20px" hidden>
+          <div class="panel-title"><h2 style="font-size:1rem">Заказы на этом устройстве</h2><button class="btn btn-ghost btn-sm" type="button" id="clear-history-content">Очистить</button></div>
+          <div class="history-list" id="guest-history-content-list"></div>
+        </section>
+      </div>
+
+      <div id="order-error" class="panel" style="max-width:640px;margin:0 auto" hidden>
+        <h2 style="font-size:1.3rem">Заказ не открылся</h2>
+        <p class="muted" id="order-error-text">Проверьте номер и email.</p>
+        <div class="cluster"><button class="btn btn-primary" type="button" id="show-lookup">Ввести заново</button><a class="btn btn-ghost" href="index.html">На главную</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="js/config.js" defer></script>
+<script src="js/api.js" defer></script>
+<script src="js/common.js" defer></script>
+<script src="js/order.js" defer></script>
+</body>
+</html>

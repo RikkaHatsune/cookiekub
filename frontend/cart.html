@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cookiekub-api.onrender.com; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Корзина CookieKub: проверьте печеньки, примените промокод и перейдите к оформлению.">
+<title>Корзина — CookieKub</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="cart">
+<a class="skip-link" href="#main">К содержимому</a>
+<div id="site-header"></div>
+<main id="main">
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Шаг 1 из 2</span>
+          <h1 style="margin-bottom:6px">Корзина</h1>
+          <p>Проверьте состав. Промокод считается на сервере — итог всегда честный.</p>
+        </div>
+        <a class="btn btn-ghost btn-sm" href="catalog.html">Добавить ещё</a>
+      </div>
+
+      <div id="cart-empty" class="panel cart-empty" hidden>
+        <img src="assets/hero.svg" alt="">
+        <h2>Пока пусто</h2>
+        <p class="muted">Самое время выбрать первую печеньку. Или пять.</p>
+        <a class="btn btn-primary" href="catalog.html">В каталог</a>
+      </div>
+
+      <div class="cart-layout" id="cart-layout" hidden>
+        <div class="panel">
+          <div class="panel-title">
+            <h2 style="font-size:1.3rem">Ваши печеньки</h2>
+            <span class="badge" id="cart-lines-note">0 позиций</span>
+          </div>
+          <div id="cart-list"></div>
+        </div>
+        <aside class="panel summary" aria-label="Итог заказа">
+          <h2 style="font-size:1.3rem;margin-bottom:14px">Итог</h2>
+          <div class="summary-row"><span>Товары</span><span id="sum-subtotal">0 ₽</span></div>
+          <div class="summary-row discount" id="sum-discount-row" hidden><span>Скидка <span id="sum-promo-label"></span></span><span id="sum-discount">0 ₽</span></div>
+          <div class="summary-total"><span>Итого</span><span id="sum-total">0 ₽</span></div>
+
+          <div class="promo-row">
+            <label class="sr-only" for="promo-code">Промокод</label>
+            <input class="input" id="promo-code" placeholder="Промокод" autocomplete="off" maxlength="40">
+            <button type="button" class="btn btn-soft" id="promo-apply">Применить</button>
+          </div>
+          <div class="promo-applied" id="promo-applied">
+            <span id="promo-applied-text">Промокод применён</span>
+            <button type="button" class="icon-btn" id="promo-remove" aria-label="Убрать промокод">×</button>
+          </div>
+          <p class="form-error" id="promo-error" role="alert"></p>
+          <p class="form-note" id="promo-hint">Попробуйте COOKIE10, FIRST15 или SWEET500.</p>
+
+          <a class="btn btn-primary btn-block" id="to-checkout" href="checkout.html" style="margin-top:18px">Перейти к оформлению</a>
+          <p class="form-note" style="margin:12px 0 0">Оплата — симуляция. Данные карты не сохраняются.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="js/config.js" defer></script>
+<script src="js/api.js" defer></script>
+<script src="js/common.js" defer></script>
+<script src="js/cart.js" defer></script>
+</body>
+</html>

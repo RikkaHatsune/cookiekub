@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cookiekub-api.onrender.com; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Личный кабинет KubanoID: профиль, история заказов, тикеты и безопасность аккаунта.">
+<title>Мой KubanoID — CookieKub</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="account">
+<a class="skip-link" href="#main">К содержимому</a>
+<div id="site-header"></div>
+<main id="main">
+  <section class="section-tight">
+    <div class="container">
+      <div class="dashboard-grid">
+        <aside class="side-nav panel" aria-label="Разделы кабинета">
+          <div class="profile-mini">
+            <div class="avatar" id="profile-avatar">?</div>
+            <div><b id="profile-name">Загрузка…</b><span class="muted small" id="profile-email"></span></div>
+          </div>
+          <nav>
+            <a href="#orders" class="is-active"><span data-icon="bag"></span> Мои заказы</a>
+            <a href="#tickets"><span data-icon="mail"></span> Обращения</a>
+            <a href="#security"><span data-icon="shield"></span> Безопасность</a>
+            <a href="#profile"><span data-icon="user"></span> Профиль</a>
+          </nav>
+          <a class="btn btn-ghost btn-sm" href="catalog.html">В каталог</a>
+        </aside>
+
+        <div>
+          <section class="panel" id="profile">
+            <div class="section-head" style="margin-bottom:12px">
+              <div>
+                <span class="eyebrow">KubanoID</span>
+                <h1 style="margin:4px 0 2px">Мой KubanoID</h1>
+                <p class="muted" style="margin:0">Единый аккаунт CookieKub. Здесь — заказы, обращения и настройки безопасности.</p>
+              </div>
+              <span class="badge green" id="profile-role">пользователь</span>
+            </div>
+            <table class="detail-list" id="profile-details"><tbody></tbody></table>
+          </section>
+
+          <section class="panel" id="orders">
+            <div class="panel-title">
+              <h2 style="font-size:1.25rem">Мои заказы</h2>
+              <button class="btn btn-ghost btn-sm" type="button" id="orders-refresh"><span data-icon="refresh"></span> Обновить</button>
+            </div>
+            <p class="muted small">Заказы хранятся 12 месяцев, затем персональные данные анонимизируются. Завершённые и отменённые заказы открываются по ссылке всегда, пока хранятся.</p>
+            <div id="orders-list" class="history-list" aria-live="polite"></div>
+            <div id="orders-empty" class="empty-note" hidden>
+              <p>Пока ни одного заказа.</p>
+              <a class="btn btn-primary btn-sm" href="catalog.html">Выбрать печеньки</a>
+            </div>
+          </section>
+
+          <section class="panel" id="tickets">
+            <div class="panel-title">
+              <h2 style="font-size:1.25rem">Мои обращения</h2>
+              <a class="btn btn-ghost btn-sm" href="support.html">Новое обращение</a>
+            </div>
+            <div id="tickets-list" class="ticket-list" aria-live="polite"></div>
+            <p class="muted small" id="tickets-empty" hidden>Обращений пока нет. Если что-то сломалось — форма поддержки рядом.</p>
+          </section>
+
+          <section class="panel" id="security">
+            <div class="panel-title"><h2 style="font-size:1.25rem">Безопасность</h2><span class="badge">scrypt · 7 дней</span></div>
+            <div class="two-col">
+              <form id="password-form" novalidate>
+                <h3 style="font-size:1.05rem;margin-top:0">Сменить пароль</h3>
+                <div class="field"><label for="current-password">Текущий пароль</label><input class="input" id="current-password" type="password" autocomplete="current-password" required maxlength="128"></div>
+                <div class="field"><label for="new-password">Новый пароль</label><input class="input" id="new-password" type="password" autocomplete="new-password" required minlength="8" maxlength="128" placeholder="Минимум 8 символов"></div>
+                <div class="form-error" id="password-error" role="alert"></div>
+                <button class="btn btn-primary btn-sm" type="submit" id="password-submit">Сменить пароль</button>
+                <p class="hint">После смены все сессии отзываются — придётся войти заново.</p>
+              </form>
+              <div class="danger-zone">
+                <h3 style="font-size:1.05rem;margin-top:0">Удалить аккаунт</h3>
+                <p class="muted small">Аккаунт и персональные данные будут анонимизированы, сессии отозваны. История заказов останется обезличенной.</p>
+                <button class="btn btn-danger btn-sm" type="button" id="delete-account">Удалить KubanoID</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="js/config.js" defer></script>
+<script src="js/api.js" defer></script>
+<script src="js/common.js" defer></script>
+<script src="js/account.js" defer></script>
+</body>
+</html>

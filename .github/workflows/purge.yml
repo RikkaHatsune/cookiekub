@@ -1,0 +1,23 @@
+name: Data retention purge
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call maintenance endpoint
+        env:
+          MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
+        run: |
+          if [ -z "$MAINTENANCE_TOKEN" ]; then
+            echo "MAINTENANCE_TOKEN secret is not set; skipping."
+            exit 0
+          fi
+          curl --fail --silent --show-error --max-time 60 \
+            -X POST \
+            -H "X-Maintenance-Token: $MAINTENANCE_TOKEN" \
+            https://cookiekub-api.onrender.com/api/maintenance/purge

@@ -1,0 +1,1 @@
+"""CookieKub backend package."""

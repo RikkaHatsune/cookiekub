@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cookiekub-api.onrender.com; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Создайте KubanoID — единый аккаунт CookieKub. Согласие на обработку персональных данных обязательно.">
+<title>Регистрация — KubanoID — CookieKub</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="register">
+<a class="skip-link" href="#main">К содержимому</a>
+<div id="site-header"></div>
+<main id="main">
+  <div class="auth-wrap">
+    <aside class="auth-art" aria-hidden="true">
+      <img src="assets/hero.svg" alt="">
+      <div class="auth-art-copy">
+        <span class="eyebrow" style="color:#8a5a3b">KubanoID</span>
+        <h2>Завести<br>свой KubanoID</h2>
+        <p>Один аккаунт для заказов, истории и поддержки. Гость тоже может заказать — но с аккаунтом удобнее.</p>
+      </div>
+    </aside>
+    <section class="auth-main">
+      <div class="auth-card">
+        <div class="auth-brand">
+          <img src="assets/logo.svg" alt="">
+          <div><b>KubanoID</b><span>единый аккаунт CookieKub</span></div>
+        </div>
+        <h1>Создать KubanoID</h1>
+        <p class="auth-sub">Имя, email и пароль — больше для аккаунта ничего не нужно.</p>
+        <form id="register-form" novalidate>
+          <div class="field">
+            <label for="register-name">Как вас зовут</label>
+            <input class="input" id="register-name" name="full_name" autocomplete="name" required minlength="2" maxlength="120" placeholder="Иван Петров">
+          </div>
+          <div class="field">
+            <label for="register-email">Email</label>
+            <input class="input" id="register-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="register-password">Пароль</label>
+            <input class="input" id="register-password" name="password" type="password" autocomplete="new-password" required minlength="8" maxlength="128" placeholder="Минимум 8 символов">
+            <div class="hint">От 8 до 128 символов. Хранится как scrypt-хэш, не в открытом виде.</div>
+          </div>
+          <label class="checkbox" style="margin:8px 0 16px">
+            <input type="checkbox" id="register-consent" required>
+            <span>Согласен на обработку персональных данных по <a href="privacy.html" target="_blank" rel="noopener">политике KubanoID</a>. Без согласия аккаунт не создаётся.</span>
+          </label>
+          <div class="form-error" id="register-error" role="alert"></div>
+          <button class="btn btn-primary btn-block" type="submit" id="register-submit">Создать KubanoID</button>
+        </form>
+        <p class="auth-foot">Уже есть аккаунт? <a href="login.html">Войти</a></p>
+        <div class="auth-secure">
+          <span id="register-shield"></span>
+          <span>Никаких паспортов и карт. Платёжные данные вводятся только в браузере и не сохраняются на сервере.</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="js/config.js" defer></script>
+<script src="js/api.js" defer></script>
+<script src="js/common.js" defer></script>
+<script src="js/register.js" defer></script>
+</body>
+</html>

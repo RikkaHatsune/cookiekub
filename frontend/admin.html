@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cookiekub-api.onrender.com; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Админ-панель CookieKub: товары, заказы, промокоды, пользователи и поддержка.">
+<title>Админ-панель — CookieKub</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="admin">
+<a class="skip-link" href="#main">К содержимому</a>
+<div id="site-header"></div>
+<main id="main">
+  <section class="section-tight">
+    <div class="container">
+      <div class="admin-layout">
+        <aside class="admin-side" aria-label="Разделы админ-панели">
+          <div class="admin-brand"><img src="assets/logo.svg" alt=""> CookieKub · админ</div>
+          <nav id="admin-nav">
+            <a href="#dashboard" data-tab="dashboard"><span data-icon="home"></span> Обзор</a>
+            <a href="#products" data-tab="products"><span data-icon="cookie"></span> Товары</a>
+            <a href="#orders" data-tab="orders"><span data-icon="bag"></span> Заказы</a>
+            <a href="#promos" data-tab="promos"><span data-icon="sparkles"></span> Промокоды</a>
+            <a href="#users" data-tab="users"><span data-icon="user"></span> Пользователи</a>
+            <a href="#tickets" data-tab="tickets"><span data-icon="mail"></span> Поддержка</a>
+            <a href="#audit" data-tab="audit"><span data-icon="shield"></span> Аудит</a>
+          </nav>
+          <a class="btn btn-ghost btn-sm" href="index.html" style="margin-top:12px;color:#f6e7d2;border-color:rgba(255,255,255,.25)">← В магазин</a>
+        </aside>
+
+        <div>
+          <div class="admin-top">
+            <div>
+              <p class="eyebrow">KubanoID · роль admin</p>
+              <h1 id="admin-title">Обзор</h1>
+            </div>
+            <div class="cluster">
+              <span class="badge green" id="admin-admin-email">admin</span>
+              <button class="btn btn-ghost btn-sm" id="admin-refresh" type="button">Обновить</button>
+            </div>
+          </div>
+
+          <div id="admin-loading" class="empty" hidden>
+            <div class="spinner dark" style="margin:0 auto 10px"></div>
+            Загружаем данные…
+          </div>
+          <div id="admin-error" class="notice" hidden></div>
+
+          <!-- Обзор -->
+          <section id="tab-dashboard" class="admin-tab" hidden>
+            <div class="stat-grid" id="stats-grid"></div>
+            <div class="panel">
+              <div class="cluster" style="justify-content:space-between;margin-bottom:12px">
+                <h2 style="margin:0;font-size:1.15rem">Последние заказы</h2>
+                <a class="btn btn-ghost btn-sm" href="#orders" data-goto="orders">Все заказы</a>
+              </div>
+              <div class="table-wrap">
+                <table class="data">
+                  <thead><tr><th>Номер</th><th>Клиент</th><th>Сумма</th><th>Статус</th><th>Дата</th></tr></thead>
+                  <tbody id="recent-orders"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- Товары -->
+          <section id="tab-products" class="admin-tab" hidden>
+            <div class="toolbar">
+              <input class="input" id="products-search" type="search" placeholder="Поиск по названию или slug" aria-label="Поиск товаров">
+              <span class="spacer"></span>
+              <button class="btn btn-primary" id="product-add" type="button">+ Добавить товар</button>
+            </div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th></th><th>Товар</th><th>Категория</th><th>Цена</th><th>Остаток</th><th>Активен</th><th></th></tr></thead>
+                <tbody id="products-body"></tbody>
+              </table>
+            </div>
+            <div class="empty" id="products-empty" hidden>Ничего не найдено.</div>
+          </section>
+
+          <!-- Заказы -->
+          <section id="tab-orders" class="admin-tab" hidden>
+            <div class="toolbar">
+              <select class="select" id="orders-status" aria-label="Статус заказа">
+                <option value="">Все статусы</option>
+                <option value="processing">В обработке</option>
+                <option value="completed">Выполнен</option>
+                <option value="cancelled">Отменён</option>
+              </select>
+              <input class="input" id="orders-search" type="search" placeholder="Номер или email" aria-label="Поиск заказов">
+              <span class="spacer"></span>
+              <span class="muted small" id="orders-count"></span>
+            </div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Номер</th><th>Клиент</th><th>Получение</th><th>Сумма</th><th>Статус</th><th>Дата</th><th></th></tr></thead>
+                <tbody id="orders-body"></tbody>
+              </table>
+            </div>
+            <div class="empty" id="orders-empty" hidden>Заказов пока нет.</div>
+          </section>
+
+          <!-- Промокоды -->
+          <section id="tab-promos" class="admin-tab" hidden>
+            <div class="toolbar">
+              <span class="spacer"></span>
+              <button class="btn btn-primary" id="promo-add" type="button">+ Новый промокод</button>
+            </div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Код</th><th>Скидка</th><th>Мин. сумма</th><th>Использовано</th><th>Период</th><th>Активен</th><th></th></tr></thead>
+                <tbody id="promos-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Пользователи -->
+          <section id="tab-users" class="admin-tab" hidden>
+            <div class="toolbar">
+              <input class="input" id="users-search" type="search" placeholder="Email или имя" aria-label="Поиск пользователей">
+              <span class="spacer"></span>
+              <span class="muted small" id="users-count"></span>
+            </div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Пользователь</th><th>Роль</th><th>Активен</th><th>Согласие</th><th>Создан</th><th></th></tr></thead>
+                <tbody id="users-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Тикеты -->
+          <section id="tab-tickets" class="admin-tab" hidden>
+            <div class="toolbar">
+              <select class="select" id="tickets-status" aria-label="Статус тикета">
+                <option value="">Все обращения</option>
+                <option value="open">Открытые</option>
+                <option value="answered">Отвеченные</option>
+                <option value="closed">Закрытые</option>
+              </select>
+              <span class="spacer"></span>
+              <span class="muted small" id="tickets-count"></span>
+            </div>
+            <div id="tickets-list" class="ticket-list"></div>
+            <div class="empty" id="tickets-empty" hidden>Обращений нет.</div>
+          </section>
+
+          <!-- Аудит -->
+          <section id="tab-audit" class="admin-tab" hidden>
+            <p class="muted small">Журнал действий администраторов. Персональные данные в деталях не пишутся.</p>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Когда</th><th>Админ</th><th>Действие</th><th>Объект</th><th>Детали</th></tr></thead>
+                <tbody id="audit-body"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<div id="toast-root" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

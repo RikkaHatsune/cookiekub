@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cookiekub-api.onrender.com; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Каталог печенья CookieKub: классика, шоколад, фрукты, орехи, веган и подарки. Пять карточек в ряд на большом экране.">
+<title>Каталог — CookieKub</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="catalog">
+<a class="skip-link" href="#main">К содержимому</a>
+<div id="site-header"></div>
+<main id="main">
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">12 характеров</span>
+          <h1 style="margin-bottom:6px">Каталог печенек</h1>
+          <p>Каждая — со своей историей. Добавляйте в корзину, применяйте промокод и выбирайте кафе.</p>
+        </div>
+        <span class="badge green" id="stock-note">свежая партия</span>
+      </div>
+      <div class="toolbar">
+        <div class="chips" id="category-chips" role="group" aria-label="Категории">
+          <button type="button" class="chip is-active" data-category="all">Все</button>
+        </div>
+        <div class="spacer"></div>
+        <label class="sr-only" for="catalog-search">Поиск по каталогу</label>
+        <input class="input" id="catalog-search" type="search" placeholder="Найти печеньку…" autocomplete="off" style="min-width:240px">
+        <label class="sr-only" for="catalog-sort">Сортировка</label>
+        <select class="select" id="catalog-sort" style="min-width:180px">
+          <option value="default">Сначала популярные</option>
+          <option value="price-asc">Сначала дешевле</option>
+          <option value="price-desc">Сначала дороже</option>
+          <option value="name">По названию</option>
+        </select>
+      </div>
+      <div class="product-grid" id="catalog-grid" aria-live="polite">
+        <div class="skeleton loading-card"></div><div class="skeleton loading-card"></div><div class="skeleton loading-card"></div><div class="skeleton loading-card"></div><div class="skeleton loading-card"></div>
+      </div>
+      <p class="muted small" id="catalog-empty" hidden style="text-align:center;padding:40px 0">Ничего не нашлось. Попробуйте другой запрос или категорию.</p>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="js/config.js" defer></script>
+<script src="js/api.js" defer></script>
+<script src="js/common.js" defer></script>
+<script src="js/catalog.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local secrets and environment
+.env
+.secrets/
+*.local
+
+# Portable PostgreSQL and local data (outside repo by default)
+.pg/
+postgres-data/
+
+# Archify working directories and raw check logs
+.archify/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local screenshots from debugging runs
+docs/screenshots/dev-*.png
