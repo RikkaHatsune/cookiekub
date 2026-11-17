@@ -29,8 +29,10 @@ def connect(url: str | None = None) -> psycopg.Connection:
     return psycopg.connect(
         url or database_url(),
         row_factory=dict_row,
-        connect_timeout=5,
+        connect_timeout=15,
         application_name="cookiekub",
+        # Supabase/PgBouncer-пулер не любит серверные prepared statements.
+        prepare_threshold=None,
     )
 
 

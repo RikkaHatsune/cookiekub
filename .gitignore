@@ -26,3 +26,7 @@ Thumbs.db
 
 # Local screenshots from debugging runs
 docs/screenshots/dev-*.png
+docs/screenshots/github-*.png
+
+# Одноразовые дампы seed для ручного переноса
+db/seed_data*.sql

@@ -129,6 +129,9 @@ PROMOS = [
 
 def seed(url: str | None = None, verbose: bool = True) -> None:
     with connect(url) as conn:
+        # Supabase pooler иногда рвёт длинную транзакцию; seed идемпотентен,
+        # поэтому фиксируем каждый шаг отдельно.
+        conn.autocommit = True
         # --- кафе ---
         for slug, name, address, phone, opens, closes, x, y, sort in CAFES:
             conn.execute(
