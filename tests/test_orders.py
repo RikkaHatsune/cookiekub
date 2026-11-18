@@ -39,6 +39,7 @@ def test_guest_order_saves_only_last4_and_lookup(client):
     assert order["customer"]["email"] == "guest@example.com"
     assert order["payment"]["last4"] == "4242"
     assert order["payment"]["simulated"] is True
+    assert order["payment"]["reference"].startswith("PAY-")
     assert order["items"][0]["quantity"] == 2
 
     with _db() as conn:

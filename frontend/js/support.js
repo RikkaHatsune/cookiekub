@@ -34,8 +34,8 @@
       $("#support-success").hidden = false;
       $("#support-success").classList.add("is-visible");
       $("#support-success-text").textContent =
-        "Тикет #" + ticket.id + " сохранён. Письмо на support@cookiekub.ru не отправлено — это симулятор. " +
-        (window.CK_USER ? "Ответ появится в кабинете." : "Сохраните номер тикета: " + ticket.id + ".");
+        "Тикет #" + ticket.id + " создан. " +
+        (window.CK_USER ? "Ответ появится в кабинете." : "Сохраните номер обращения: " + ticket.id + ".");
       $("#support-form").reset();
       toast("Тикет создан", "success");
       $("#support-success").scrollIntoView({ behavior: "smooth", block: "center" });

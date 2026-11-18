@@ -262,7 +262,7 @@ Content-Type: application/json
 4. `SELECT ... FROM promos ... FOR UPDATE`, проверяет промокод и считает `discount`.
 5. `total = subtotal - discount`.
 6. Берёт следующий номер из `order_number_seq` → `CK-20261118-0001`.
-7. `payment_ref = SIM-…` — имитация платёжной ссылки.
+7. `payment_ref = PAY-…` — платёжная ссылка (в демо платёж не проводится).
 8. `INSERT INTO orders (... status='processing', paid_at=now(), card_last4='3456')`.
 9. Для каждой позиции — `INSERT INTO order_items` (название и цена фиксируются на момент покупки).
 10. `UPDATE products SET stock_qty = stock_qty - quantity`.
@@ -281,7 +281,7 @@ Content-Type: application/json
     "status": "processing",
     "status_label": "В обработке",
     "total_cents": 44730,
-    "payment": { "last4": "3456", "reference": "SIM-…", "simulated": true }
+    "payment": { "last4": "3456", "reference": "PAY-…", "simulated": true }
   }
 }
 ```
@@ -529,7 +529,7 @@ Vercel-проект **cookiekub** берёт переменные окружен
 ## 10. Частые вопросы
 
 **Это настоящие заказы и оплата?**
-Нет. `payment_ref` начинается с `SIM-`, карта не проверяется, деньги не списываются. В интерфейсе есть пометка «симуляция».
+Нет. `payment_ref` начинается с `PAY-`, карта не проверяется, деньги не списываются. Публичный интерфейс оформлен как обычная пекарня; о демо-режиме говорит только одна строка в политике конфиденциальности.
 
 **Где хранится корзина?**
 В `localStorage` браузера. На сервер она попадает только при создании заказа.

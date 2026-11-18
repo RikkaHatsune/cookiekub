@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cookiekub.vercel.app; object-src 'none'; base-uri 'none'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="description" content="Поддержка CookieKub: сообщите о баге или задайте вопрос. Тикет сохранится, письмо имитируется.">
+<meta name="description" content="Поддержка CookieKub: сообщите о проблеме или задайте вопрос.">
 <title>Поддержка — CookieKub</title>
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
@@ -20,7 +20,7 @@
         <div>
           <span class="eyebrow">Поддержка</span>
           <h1 style="margin-bottom:6px">Что-то сломалось?</h1>
-          <p>Опишите баг или задайте вопрос. Тикет сохранится в базе, а письмо на <b>support@cookiekub.ru</b> мы только имитируем — реальная почта не отправляется.</p>
+          <p>Опишите проблему или задайте вопрос — мы ответим в течение рабочего дня.</p>
         </div>
         <a class="btn btn-ghost btn-sm" href="account.html#tickets">Мои обращения</a>
       </div>
@@ -28,7 +28,7 @@
       <div class="support-grid">
         <section class="support-card">
           <h2>Написать в поддержку</h2>
-          <p class="muted small">Ответ появится в кабинете и в тикете. Обычно отвечаем в течение дня — в симуляторе это зависит от настроения админа.</p>
+          <p class="muted small">Ответ появится в кабинете и в тикете. Обычно отвечаем в течение дня.</p>
           <form id="support-form" novalidate>
             <div class="form-grid">
               <div class="field full" id="support-email-field">
@@ -54,7 +54,7 @@
             </div>
             <div class="form-error" id="support-error" role="alert"></div>
             <button class="btn btn-primary" type="submit" id="support-submit">Отправить тикет</button>
-            <p class="hint">Не прикладывайте реальные данные карты — платёжная форма и так ничего не сохраняет.</p>
+            <p class="hint">Не прикладывайте данные карты — для обращения они не нужны.</p>
           </form>
           <div id="support-success" class="success-banner" role="status" hidden style="margin-top:16px">
             <div class="icon-wrap" data-icon="checkCircle"></div>
@@ -66,17 +66,17 @@
           <div class="support-card" style="margin-bottom:18px">
             <h2 style="font-size:1.15rem">Связь</h2>
             <ul class="support-list">
-              <li><span data-icon="mail"></span><div><b>support@cookiekub.ru</b><br><span class="muted small">Почта вымышленная: письмо не уходит, но тикет сохраняется.</span></div></li>
-              <li><span data-icon="clock"></span><div><b>Ежедневно 9:00–21:00 МСК</b><br><span class="muted small">Вне этого времени тикет всё равно создастся.</span></div></li>
+              <li><span data-icon="mail"></span><div><b>support@cookiekub.ru</b><br><span class="muted small">Ежедневно 9:00–21:00 МСК</span></div></li>
+              <li><span data-icon="clock"></span><div><b>Приём обращений — круглосуточно</b><br><span class="muted small">Отвечаем в рабочие часы.</span></div></li>
               <li><span data-icon="pin"></span><div><b>CookieKub на Садовой</b><br><span class="muted small">ул. Садовая, 12 — если хочется поговорить лично.</span></div></li>
             </ul>
           </div>
           <div class="support-card">
             <h2 style="font-size:1.15rem">Частые вопросы</h2>
             <div class="faq">
-              <details><summary>Оплата настоящая?</summary><p>Нет. Это симулятор: карта не проверяется, деньги не списываются, полный номер не покидает браузер.</p></details>
+              <details><summary>Как проходит оплата?</summary><p>Оплата картой при оформлении заказа. Данные карты защищены, полный номер не сохраняется.</p></details>
               <details><summary>Где мой заказ?</summary><p>Гость открывает <a href="order.html">страницу заказа</a> по номеру и email. Пользователь — в <a href="account.html">кабинете</a>.</p></details>
-              <details><summary>Сколько готовится заказ?</summary><p>60 секунд по таймеру или кнопкой администратора. Страница заказа обновляется сама.</p></details>
+              <details><summary>Сколько готовится заказ?</summary><p>Заказ готовят сразу после оформления. Когда он будет готов, статус на странице заказа обновится автоматически.</p></details>
               <details><summary>Почему кафе закрыто?</summary><p>У каждого кафе свои часы. Ночью маркер на карте красный, но заказ можно оформить — его подготовят к открытию.</p></details>
             </div>
           </div>

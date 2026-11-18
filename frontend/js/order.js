@@ -59,7 +59,7 @@
       return {
         cls: "processing", pill: "В обработке", icon: "cookie",
         title: "Печеньки уже в печи",
-        sub: "Мы замесили тесто и поставили партию. В симуляторе заказ готовится 60 секунд — страница обновится сама.",
+        sub: "Мы замесили тесто и поставили партию. Страница обновится сама, когда заказ будет готов.",
         steps: { paid: "done", cooking: "active", ready: "" },
       };
     }
@@ -77,7 +77,7 @@
     return {
       cls: "cancelled", pill: "Отменён", icon: "alert",
       title: "Заказ отменён",
-      sub: "Если это ошибка или нужна помощь — напишите в поддержку. Деньги в симуляции не списывались.",
+      sub: "Если это ошибка или нужна помощь — напишите в поддержку.",
       steps: { paid: "done", cooking: "", ready: "" },
     };
   }
@@ -101,15 +101,9 @@
   }
 
   function updateCountdown() {
-    if (!order || order.status !== "processing" || !order.paid_at) return;
-    const readyAt = new Date(order.paid_at).getTime() + 60000;
-    const remaining = Math.max(0, Math.ceil((readyAt - Date.now()) / 1000));
+    if (!order || order.status !== "processing") return;
     const el = $("#countdown");
-    if (remaining <= 0) {
-      el.innerHTML = "Вот-вот будет готово…";
-    } else {
-      el.innerHTML = "Готовность через <b>" + remaining + "</b> сек";
-    }
+    el.textContent = "Скоро будет готово";
   }
 
   function renderMeta() {
@@ -151,7 +145,7 @@
     rows.push(["Телефон", escapeHTML(order.customer.phone)]);
     if (order.customer.comment) rows.push(["Комментарий", escapeHTML(order.customer.comment)]);
     if (order.promo) rows.push(["Промокод", escapeHTML(order.promo.code + " · " + (order.promo.label || ""))]);
-    rows.push(["Оплата", escapeHTML(order.payment.last4 ? "Карта •••• " + order.payment.last4 : "Карта (симуляция)")]);
+    rows.push(["Оплата", escapeHTML(order.payment.last4 ? "Карта •••• " + order.payment.last4 : "Карта")]);
     rows.push(["Номер платежа", escapeHTML(order.payment.reference || "—")]);
     $("#details-body").innerHTML =
       '<table class="detail-list">' + rows.map(([k, v]) => "<tr><td>" + k + "</td><td>" + v + "</td></tr>").join("") + "</table>" +
@@ -212,11 +206,16 @@
 
   function renderPayment() {
     const p = order.payment || {};
+    const badge = $("#payment-badge");
+    if (badge) {
+      const refunded = order.status === "cancelled";
+      badge.textContent = refunded ? "Возврат" : "Оплачено";
+      badge.className = "badge " + (refunded ? "red" : "green");
+    }
     $("#payment-body").innerHTML =
-      "<p><strong>" + escapeHTML(p.last4 ? "Карта •••• " + p.last4 : "Карта (симуляция)") + "</strong></p>" +
+      "<p><strong>" + escapeHTML(p.last4 ? "Карта •••• " + p.last4 : "Карта") + "</strong></p>" +
       "<p>Платёж: " + escapeHTML(p.reference || "—") + "</p>" +
-      "<p>Оплачен: " + escapeHTML(formatDate(p.paid_at, true)) + "</p>" +
-      '<p style="margin-top:8px">Это симуляция. Реальные деньги не списывались.</p>';
+      "<p>Оплачен: " + escapeHTML(formatDate(p.paid_at, true)) + "</p>";
   }
 
   function renderHistory() {
@@ -279,7 +278,7 @@
         '<p class="muted">' + escapeHTML(order.fulfillment === "pickup" ? "Самовывоз: " + (order.cafe ? order.cafe.name + ", " + order.cafe.address : "") : "Доставка: " + order.delivery_address) + "</p>" +
         '<div class="summary-row"><span>Позиций</span><span>' + order.items.reduce((n, i) => n + i.quantity, 0) + "</span></div>" +
         '<div class="summary-total"><span>Итого</span><span>' + money(order.total_cents) + "</span></div>" +
-        '<p class="form-note">Заказ готовится 60 секунд. Страница обновится автоматически.</p>';
+        '<p class="form-note">Мы уже готовим ваш заказ. Статус обновится автоматически.</p>';
       const actions = document.createElement("div");
       actions.innerHTML =
         '<button class="btn btn-primary" type="button" data-details>К деталям заказа</button>' +

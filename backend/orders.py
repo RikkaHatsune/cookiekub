@@ -152,7 +152,7 @@ def _checkout(conn, user, data: dict):
     seq = conn.execute("SELECT nextval('order_number_seq') AS n").fetchone()["n"]
     date_part = datetime.now(MOSCOW).strftime("%Y%m%d")
     order_number = f"CK-{date_part}-{seq:04d}"
-    payment_ref = f"SIM-{secrets.token_hex(5).upper()}"
+    payment_ref = f"PAY-{secrets.token_hex(5).upper()}"
     last4 = _last4(data)
 
     order = conn.execute(

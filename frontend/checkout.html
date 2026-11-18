@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cookiekub.vercel.app; object-src 'none'; base-uri 'none'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="description" content="Оформление заказа CookieKub: самовывоз из кафе или доставка, симуляция оплаты картой.">
+<meta name="description" content="Оформление заказа CookieKub: самовывоз из кафе или доставка, оплата картой.">
 <title>Оформление — CookieKub</title>
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
@@ -20,7 +20,7 @@
         <div>
           <span class="eyebrow">Шаг 2 из 2</span>
           <h1 style="margin-bottom:6px">Оформление заказа</h1>
-          <p>Оплата — симуляция: карта не проверяется, полный номер никуда не отправляется. Гостю нужен только email для доступа к заказу.</p>
+          <p>Оплата картой. Гостю нужен только email, чтобы открыть заказ позже.</p>
         </div>
         <a class="btn btn-ghost btn-sm" href="cart.html">← В корзину</a>
       </div>
@@ -40,7 +40,7 @@
             <div class="form-grid">
               <div class="field"><label for="customer-name">Имя</label><input class="input" id="customer-name" name="name" autocomplete="name" required maxlength="120" placeholder="Как к вам обращаться"></div>
               <div class="field"><label for="customer-phone">Телефон</label><input class="input" id="customer-phone" name="phone" type="tel" autocomplete="tel" required maxlength="40" placeholder="+7 900 000-00-00"></div>
-              <div class="field full"><label for="customer-email">Email</label><input class="input" id="customer-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"><div class="hint">На этот адрес мы «отправим» письмо о заказе. Реальной рассылки нет.</div></div>
+              <div class="field full"><label for="customer-email">Email</label><input class="input" id="customer-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"><div class="hint">На этот адрес отправим детали заказа.</div></div>
               <div class="field full"><label for="customer-comment">Комментарий <span class="muted">(необязательно)</span></label><textarea class="textarea" id="customer-comment" name="comment" maxlength="500" placeholder="Например: побольше шоколада"></textarea></div>
             </div>
           </section>
@@ -49,7 +49,7 @@
             <div class="panel-title"><h2 style="font-size:1.2rem">Как получить</h2></div>
             <div class="choice-grid" style="margin-bottom:16px">
               <label class="choice"><input type="radio" name="fulfillment" value="pickup" checked><strong>Самовывоз</strong><span>Заберёте в кафе, бесплатно</span></label>
-              <label class="choice"><input type="radio" name="fulfillment" value="delivery"><strong>Доставка</strong><span>Курьер, симуляция</span></label>
+              <label class="choice"><input type="radio" name="fulfillment" value="delivery"><strong>Доставка</strong><span>Курьер по городу</span></label>
             </div>
             <div id="pickup-block">
               <div class="field-label">Выберите кафе</div>
@@ -60,21 +60,21 @@
               </div>
             </div>
             <div id="delivery-block" hidden>
-              <div class="field"><label for="delivery-address">Адрес доставки</label><input class="input" id="delivery-address" maxlength="300" placeholder="Город, улица, дом, квартира"><div class="hint">Доставка тоже вымышленная — но адрес сохраним, чтобы курьер «знал», куда идти.</div></div>
+              <div class="field"><label for="delivery-address">Адрес доставки</label><input class="input" id="delivery-address" maxlength="300" placeholder="Город, улица, дом, квартира"><div class="hint">Укажите адрес, чтобы курьер знал, куда доставить заказ.</div></div>
             </div>
           </section>
 
           <section class="panel">
-            <div class="panel-title"><h2 style="font-size:1.2rem">Оплата</h2><span class="badge blue">симуляция</span></div>
+            <div class="panel-title"><h2 style="font-size:1.2rem">Оплата</h2><span class="badge blue">безопасно</span></div>
             <div class="pay-card">
-              <div class="pay-card-head"><span>Карта</span><span style="font-size:0.72rem;color:var(--ink-muted)">любые данные</span></div>
+              <div class="pay-card-head"><span>Карта</span><span style="font-size:0.72rem;color:var(--ink-muted)">VISA · MC · МИР</span></div>
               <div class="field"><label for="card-number">Номер карты</label><div class="card-number-row"><input class="input" id="card-number" inputmode="numeric" maxlength="24" placeholder="0000 0000 0000 0000" autocomplete="off"><span class="card-brand" id="card-brand">CARD</span></div></div>
               <div class="form-grid">
                 <div class="field"><label for="card-expiry">Срок</label><input class="input" id="card-expiry" maxlength="5" placeholder="MM/YY" autocomplete="off"></div>
                 <div class="field"><label for="card-cvv">CVV</label><input class="input" id="card-cvv" inputmode="numeric" maxlength="4" placeholder="•••" autocomplete="off"></div>
               </div>
               <div class="field" style="margin-bottom:0"><label for="card-holder">Держатель карты</label><input class="input" id="card-holder" maxlength="60" placeholder="IVAN PETROV" autocomplete="off"></div>
-              <div class="pay-note" style="margin-top:12px"><span>🛡</span><span>Проверки нет. На сервер уйдут только последние 4 цифры (если получится их выделить) и факт оплаты. CVV и срок не сохраняются.</span></div>
+              <div class="pay-note" style="margin-top:12px"><span>🛡</span><span>Полные данные карты не сохраняются. В деталях заказа останутся только последние 4 цифры.</span></div>
             </div>
             <label class="checkbox" id="consent-block" style="margin-top:16px"><input type="checkbox" id="privacy-consent"><span>Согласен на обработку персональных данных по <a href="privacy.html" target="_blank" rel="noopener">политике KubanoID</a>. Обязательно для гостевого заказа.</span></label>
             <p class="form-error" id="checkout-error" role="alert"></p>
@@ -88,7 +88,7 @@
           <div class="summary-row discount" id="checkout-discount-row" hidden><span>Скидка <span id="checkout-promo-label"></span></span><span id="checkout-discount">0 ₽</span></div>
           <div class="summary-total"><span>К оплате</span><span id="checkout-total">0 ₽</span></div>
           <button class="btn btn-primary btn-block" type="submit" id="pay-button" style="margin-top:16px">Оплатить и оформить</button>
-          <p class="form-note" style="margin:12px 0 0;text-align:center">Нажимая, вы подтверждаете, что это учебная симуляция.</p>
+          <p class="form-note" style="margin:12px 0 0;text-align:center">Нажимая, вы принимаете условия обработки персональных данных.</p>
         </aside>
       </form>
     </div>

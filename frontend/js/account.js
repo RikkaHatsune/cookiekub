@@ -27,7 +27,7 @@
   function orderCard(order) {
     const status = statusInfo(order.status);
     const cafe = order.cafe ? order.cafe.name : "Курьер";
-    const payment = order.payment && order.payment.last4 ? "Карта •••• " + order.payment.last4 : "Оплата картой (симуляция)";
+    const payment = order.payment && order.payment.last4 ? "Карта •••• " + order.payment.last4 : "Оплата картой";
     return (
       '<article class="history-item">' +
         '<div class="history-main">' +

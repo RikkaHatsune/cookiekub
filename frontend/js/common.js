@@ -371,7 +371,7 @@
     host.className = "site-header";
     host.innerHTML =
       '<div class="container header-inner">' +
-      '<a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>CookieKub<small>Пекарня-симулятор</small></span></a>' +
+      '<a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>CookieKub<small>Пекарня</small></span></a>' +
       '<nav class="main-nav" id="main-nav" aria-label="Основная навигация">' + navItems(user) + "</nav>" +
       '<div class="header-actions">' +
       '<a class="cart-link" href="cart.html" aria-label="Корзина">' + icon("cart") + '<span class="label">Корзина</span><span class="cart-count" data-cart-count hidden>0</span></a>' +
@@ -403,12 +403,12 @@
     host.className = "site-footer";
     host.innerHTML =
       '<div class="container"><div class="footer-grid">' +
-      '<div class="footer-brand"><a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>CookieKub<small>Пекарня-симулятор</small></span></a>' +
-      "<p>Печеньки, которые не нужно печь. Магазин-симулятор: заказы и оплата вымышленные, но всё работает по-настоящему.</p></div>" +
+      '<div class="footer-brand"><a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>CookieKub<small>Пекарня</small></span></a>' +
+      "<p>Свежее печенье каждое утро. Свои кафе, доставка по городу и печенье, которое хочется заказать ещё.</p></div>" +
       '<div><h4>Магазин</h4><a href="catalog.html">Каталог</a><a href="cart.html">Корзина</a><a href="account.html">Мои заказы</a></div>' +
       '<div><h4>Помощь</h4><a href="support.html">Поддержка</a><a href="support.html#faq">Вопросы и ответы</a><a href="privacy.html">Персональные данные</a></div>' +
       '<div><h4>Связь</h4><a href="mailto:support@cookiekub.ru">support@cookiekub.ru</a><a href="support.html">Форма обращения</a><span class="small muted">Ежедневно 9:00–21:00 МСК</span></div>' +
-      "</div><div class=\"footer-bottom\"><span>© <span data-year></span> CookieKub. Учебный проект, не настоящий магазин.</span>" +
+      "</div><div class=\"footer-bottom\"><span>© <span data-year></span> CookieKub. Все права защищены.</span>" +
       '<span class="footer-badge">' + icon("shield") + " KubanoID · данные под защитой</span></div></div>";
     $$("[data-year]").forEach((el) => { el.textContent = String(new Date().getFullYear()); });
   }

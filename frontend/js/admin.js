@@ -521,7 +521,7 @@
           "</div></div>" + badge(ticket.status) + "</div><p>" + esc(ticket.message) + "</p>" +
           (ticket.admin_reply ? '<div class="ticket-reply">' + esc(ticket.admin_reply) + "</div>" : "") +
           '<div class="form-grid" style="margin-top:12px"><div class="field full"><label>Ответ</label><textarea class="textarea" data-ticket-reply="' +
-          ticket.id + '" maxlength="4000" placeholder="Текст ответа (симуляция письма)">' + esc(ticket.admin_reply || "") + "</textarea></div>" +
+          ticket.id + '" maxlength="4000" placeholder="Текст ответа клиенту">' + esc(ticket.admin_reply || "") + "</textarea></div>" +
           '<div class="field"><label>Статус</label><select class="select" data-ticket-status="' + ticket.id + '">' +
           '<option value="open"' + (ticket.status === "open" ? " selected" : "") + ">Открыт</option>" +
           '<option value="answered"' + (ticket.status === "answered" ? " selected" : "") + ">Отвечен</option>" +

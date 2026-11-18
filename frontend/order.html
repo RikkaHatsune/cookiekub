@@ -72,7 +72,7 @@
                 <div class="tl-step" data-step="ready">Готов</div>
               </div>
               <div class="cluster" style="justify-content:space-between;margin-top:12px">
-                <span class="countdown" id="countdown" hidden>Готовность через <b>60</b> сек</span>
+                <span class="countdown" id="countdown" hidden>Скоро будет готово</span>
                 <button class="btn btn-ghost btn-sm" type="button" id="refresh-order">Обновить</button>
               </div>
               <div class="order-meta" id="order-meta"></div>
@@ -92,9 +92,9 @@
             </section>
 
             <section class="panel order-section" id="map-panel">
-              <div class="panel-title"><h2 style="font-size:1.05rem">Карта города</h2><span class="muted" style="font-size:.75rem">вымышленный городок</span></div>
+              <div class="panel-title"><h2 style="font-size:1.05rem">Карта города</h2><span class="muted" style="font-size:.75rem">город CookieKub</span></div>
               <div class="map-wrap" id="map-wrap">
-                <img src="assets/map.svg" alt="Карта городка CookieKub с тремя кафе">
+                <img src="assets/map.svg" alt="Карта города CookieKub с тремя кафе">
               </div>
               <div class="map-legend">
                 <span><i class="legend-dot"></i> открыто</span>
@@ -117,8 +117,8 @@
                 <a class="btn btn-ghost btn-block" href="support.html">Проблема с заказом?</a>
               </div>
             </section>
-            <section class="panel" style="margin-top:16px">
-              <div class="panel-title"><h2 style="font-size:1rem">Оплата</h2><span class="badge blue">симуляция</span></div>
+            <section class="panel" id="payment-panel" style="margin-top:16px">
+              <div class="panel-title"><h2 style="font-size:1rem">Оплата</h2><span class="badge green" id="payment-badge">оплачено</span></div>
               <div id="payment-body" class="small muted"></div>
             </section>
           </aside>
