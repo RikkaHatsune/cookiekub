@@ -30,3 +30,6 @@ docs/screenshots/github-*.png
 
 # Одноразовые дампы seed для ручного переноса
 db/seed_data*.sql
+
+# Production env (секреты)
+.env.production
