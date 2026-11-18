@@ -38,7 +38,7 @@
 
 GitHub Pages умеет отдавать только статические файлы. Поэтому он не может сам выполнить Python-код или подключиться к PostgreSQL. Все действия с данными идут через Flask API на Vercel.
 
-Почему Vercel, а не Render/Neon: Render и Neon блокируются в РФ, поэтому API переехал на Vercel, а база — в Supabase. Alwaysdata остался неиспользованным экспериментом.
+Почему в итоге Vercel и Supabase: изначально планировались Render (API) и Neon (БД), но оба сервиса блокируются в РФ. Поэтому фактический стек — Vercel для Flask и Supabase для PostgreSQL.
 
 ---
 

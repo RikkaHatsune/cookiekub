@@ -1,4 +1,4 @@
-name: Keep Render awake
+name: Keep API warm
 
 on:
   schedule:

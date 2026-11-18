@@ -5196,7 +5196,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="pulse-dot"></div>
         <h1>CookieKub — архитектура и безопасность</h1>
       </div>
-      <p class="subtitle">Статический фронтенд на GitHub Pages, Flask API на Render Free и PostgreSQL на Neon Free. Гость и пользователь заказывают без реальной оплаты; KubanoID хранит только хэши паролей и токенов.</p>
+      <p class="subtitle">Статический фронтенд на GitHub Pages, Flask API на Vercel и PostgreSQL в Supabase. Гость и пользователь заказывают без реальной оплаты; KubanoID хранит только хэши паролей и токенов.</p>
     </div>
 
 
@@ -5206,7 +5206,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
          data-preset-badge-editorial-plate="ARCHIFY / PLATE 04">
       <svg viewBox="0 0 1078 588" role="img" lang="en" aria-labelledby="archify-diagram-title archify-diagram-description" data-animation="trace" data-preset="blueprint" data-quality-profile="showcase" data-node-ui="" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14">
         <title id="archify-diagram-title">CookieKub — архитектура и безопасность</title>
-        <desc id="archify-diagram-description">Статический фронтенд на GitHub Pages, Flask API на Render Free и PostgreSQL на Neon Free. Гость и пользователь заказывают без реальной оплаты; KubanoID хранит только хэши паролей и токенов.</desc>
+        <desc id="archify-diagram-description">Статический фронтенд на GitHub Pages, Flask API на Vercel и PostgreSQL в Supabase. Гость и пользователь заказывают без реальной оплаты; KubanoID хранит только хэши паролей и токенов.</desc>
         <!-- Definitions -->
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
@@ -5255,9 +5255,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
         <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="1" data-composition-frame-label="GitHub: исходники и CI" x="222" y="314" width="508" height="118" rx="12" class="c-region" stroke-width="1"/>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="2" data-composition-frame-label="Render Free · Frankfurt" x="490" y="144" width="250" height="134" rx="12" class="c-region" stroke-width="1"/>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="2" data-composition-frame-label="Vercel · Serverless" x="490" y="144" width="250" height="134" rx="12" class="c-region" stroke-width="1"/>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="3" data-composition-frame-label="Neon Free · PostgreSQL" x="788" y="144" width="250" height="126" rx="12" class="c-region" stroke-width="1"/>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="3" data-composition-frame-label="Supabase · PostgreSQL" x="788" y="144" width="250" height="126" rx="12" class="c-region" stroke-width="1"/>
 
         <!-- Connection paths (before components for correct z-order) -->
         <g data-graph-role="automatic-crossover" style="--step:0">
@@ -5294,7 +5294,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </g>
         <g data-graph-role="automatic-crossover" style="--step:8">
           <path data-graph-role="automatic-crossover-underlay" d="M 615 344 L 615 258" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="repo" data-edge-to="api" data-edge-label="Render deploy" data-edge-key="8" data-edge-id="repo-api" data-composition-points="615,344;615,258" data-composition-crossover="halo" data-composition-independent="true" d="M 615 344 L 615 258" class="a-default" data-animate="edge" style="--step:8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-edge-from="repo" data-edge-to="api" data-edge-label="git push / Vercel" data-edge-key="8" data-edge-id="repo-api" data-composition-points="615,344;615,258" data-composition-crossover="halo" data-composition-independent="true" d="M 615 344 L 615 258" class="a-default" data-animate="edge" style="--step:8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:9">
           <path data-graph-role="automatic-crossover-underlay" d="M 428 373 L 444 373 Q 452 373 452 365 L 452 290 Q 452 282 460 282 L 593 282 Q 601 282 601 274 L 601 258" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
@@ -5355,27 +5355,27 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <text data-detail="fine" x="615" y="82" class="t-security" font-size="7" text-anchor="middle">сессии в БД</text>
         </g>
 
-        <g id="node-api" data-node-id="api" data-node-label="Flask API" tabindex="0" role="button" aria-label="Focus Flask API, Gunicorn · /api/*, Render Free · Frankfurt" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Gunicorn · /api/*" data-node-tag="CORS + RBAC" data-node-context="Render Free · Frankfurt">
-          <title>Flask API · Gunicorn · /api/* · Render Free · Frankfurt · CORS + RBAC</title>
+        <g id="node-api" data-node-id="api" data-node-label="Flask API" tabindex="0" role="button" aria-label="Focus Flask API, Serverless · /api/*, Vercel · Serverless" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Serverless · /api/*" data-node-tag="CORS + RBAC" data-node-context="Vercel · Serverless">
+          <title>Flask API · Serverless · /api/* · Vercel · Serverless · CORS + RBAC</title>
           <rect x="520" y="174" width="190" height="84" rx="8" class="c-mask"/>
           <rect x="520" y="174" width="190" height="84" rx="8" class="c-backend" data-animate="node" style="--step:3" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(526 180) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="615" y="214" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Flask API</text>
-        <text data-detail="context" x="615" y="230" class="t-muted" font-size="9" text-anchor="middle">Gunicorn · /api/*</text>
+        <text data-detail="context" x="615" y="230" class="t-muted" font-size="9" text-anchor="middle">Serverless · /api/*</text>
         <text data-detail="fine" x="615" y="250" class="t-backend" font-size="7" text-anchor="middle">CORS + RBAC</text>
         </g>
 
-        <g id="node-db" data-node-id="db" data-node-label="Neon PostgreSQL" tabindex="0" role="button" aria-label="Focus Neon PostgreSQL, 11 таблиц · деньги в копейках, Neon Free · PostgreSQL" aria-pressed="false" data-node-kind="database" data-node-sublabel="11 таблиц · деньги в копейках" data-node-tag="PII минимизированы" data-node-context="Neon Free · PostgreSQL">
-          <title>Neon PostgreSQL · 11 таблиц · деньги в копейках · Neon Free · PostgreSQL · PII минимизированы</title>
+        <g id="node-db" data-node-id="db" data-node-label="Supabase PostgreSQL" tabindex="0" role="button" aria-label="Focus Supabase PostgreSQL, 11 таблиц · деньги в копейках, Supabase · PostgreSQL" aria-pressed="false" data-node-kind="database" data-node-sublabel="11 таблиц · деньги в копейках" data-node-tag="PII минимизированы" data-node-context="Supabase · PostgreSQL">
+          <title>Supabase PostgreSQL · 11 таблиц · деньги в копейках · Supabase · PostgreSQL · PII минимизированы</title>
           <rect x="818" y="174" width="190" height="76" rx="8" class="c-mask"/>
           <rect x="818" y="174" width="190" height="76" rx="8" class="c-database" data-animate="node" style="--step:6" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(824 180) scale(0.6875)">
             <ellipse cx="8" cy="4" rx="5" ry="2"/>
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="913" y="210" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Neon PostgreSQL</text>
+          <text data-node-label="" data-detail-anchor="" x="913" y="210" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Supabase PostgreSQL</text>
         <text data-detail="context" x="913" y="226" class="t-muted" font-size="9" text-anchor="middle">11 таблиц · деньги в копейках</text>
         <text data-detail="fine" x="913" y="242" class="t-database" font-size="7" text-anchor="middle">PII минимизированы</text>
         </g>
@@ -5452,9 +5452,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <rect x="266.4" y="301" width="67.6" height="14" rx="3" class="c-mask"/>
           <text x="300.2" y="311" class="t-edge-default" font-size="8" text-anchor="middle">deploy Pages</text>
         </g>
-        <g data-detail="context" data-edge-from="repo" data-edge-to="api" data-edge-label="Render deploy" data-edge-key="8" data-edge-id="repo-api">
-          <rect x="578.8" y="324" width="72.4" height="14" rx="3" class="c-mask"/>
-          <text x="615" y="334" class="t-edge-default" font-size="8" text-anchor="middle">Render deploy</text>
+        <g data-detail="context" data-edge-from="repo" data-edge-to="api" data-edge-label="git push / Vercel" data-edge-key="8" data-edge-id="repo-api">
+          <rect x="569.2" y="324" width="91.6" height="14" rx="3" class="c-mask"/>
+          <text x="615" y="334" class="t-edge-default" font-size="8" text-anchor="middle">git push / Vercel</text>
         </g>
         <g data-detail="context" data-edge-from="actions" data-edge-to="api" data-edge-label="health / purge" data-edge-key="9" data-edge-id="actions-api">
           <rect x="413.4" y="307.5" width="77.2" height="14" rx="3" class="c-mask"/>
@@ -5476,14 +5476,14 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <text data-boundary-label="" x="230" y="337" class="t-cloud" font-size="9" font-weight="600">GitHub: исходники и CI</text>
         </g>
 
-        <g data-graph-role="structural-frame-label" data-composition-frame-id="2" data-composition-frame-kind="region" data-composition-frame-label="Render Free · Frankfurt">
-          <rect data-graph-role="structural-frame-label-mask" x="494" y="154" width="134.2" height="16" rx="3" class="c-mask"/>
-          <text data-boundary-label="" x="498" y="167" class="t-cloud" font-size="9" font-weight="600">Render Free · Frankfurt</text>
+        <g data-graph-role="structural-frame-label" data-composition-frame-id="2" data-composition-frame-kind="region" data-composition-frame-label="Vercel · Serverless">
+          <rect data-graph-role="structural-frame-label-mask" x="494" y="154" width="112.6" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="498" y="167" class="t-cloud" font-size="9" font-weight="600">Vercel · Serverless</text>
         </g>
 
-        <g data-graph-role="structural-frame-label" data-composition-frame-id="3" data-composition-frame-kind="region" data-composition-frame-label="Neon Free · PostgreSQL">
-          <rect data-graph-role="structural-frame-label-mask" x="792" y="154" width="128.8" height="16" rx="3" class="c-mask"/>
-          <text data-boundary-label="" x="796" y="167" class="t-cloud" font-size="9" font-weight="600">Neon Free · PostgreSQL</text>
+        <g data-graph-role="structural-frame-label" data-composition-frame-id="3" data-composition-frame-kind="region" data-composition-frame-label="Supabase · PostgreSQL">
+          <rect data-graph-role="structural-frame-label-mask" x="792" y="154" width="123.39999999999999" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="796" y="167" class="t-cloud" font-size="9" font-weight="600">Supabase · PostgreSQL</text>
         </g>
 
         <!-- Legend -->
@@ -5698,7 +5698,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </div>
         <ul>
           <li>Pages отдаёт статику; браузер сам собирает корзину в localStorage</li>
-          <li>Checkout шлёт JSON на Render; гость передаёт email и согласие</li>
+          <li>Checkout шлёт JSON на Vercel; гость передаёт email и согласие</li>
           <li>Оплата — симуляция: на сервер уходит только last4 и факт оплаты</li>
         </ul>
       </div>
@@ -5723,7 +5723,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <ul>
           <li>11 таблиц; ПД минимизированы, карта полностью не сохраняется</li>
           <li>GitHub Actions: Pages, CI, keepalive и ежедневная очистка retention</li>
-          <li>Render и Neon Free засыпают — фронтенд показывает оверлей и retry</li>
+          <li>Vercel cold start и Supabase pause — фронтенд показывает оверлей и retry</li>
         </ul>
       </div>
     </div>

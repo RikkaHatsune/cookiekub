@@ -94,7 +94,8 @@ def client_ip() -> str:
 
 
 def rate_limit(scope: str, limit: int, window_seconds: int, extra: str = "") -> None:
-    """Best-effort in-memory лимит. Render — один инстанс; при рестарте сбрасывается."""
+    """Best-effort in-memory лимит. На Vercel serverless у каждого инстанса свой
+    счётчик, при cold start он сбрасывается; это дополнительный барьер, не основной."""
     if not current_app.config.get("RATE_LIMIT_ENABLED", True):
         return
     key = f"{scope}:{client_ip()}:{extra}"
