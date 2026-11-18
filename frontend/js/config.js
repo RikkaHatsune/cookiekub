@@ -3,7 +3,7 @@
   "use strict";
   const isPages = /\.github\.io$/i.test(location.hostname);
   const override = localStorage.getItem("cookiekub.apiBase");
-  const production = "https://cookiekub-api.onrender.com";
+  const production = "https://cookiekub.vercel.app";
   window.COOKIEKUB = {
     apiBase: override !== null ? override.replace(/\/$/, "") : isPages ? production : "",
     supportEmail: "support@cookiekub.ru",
