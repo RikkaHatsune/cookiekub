@@ -10,13 +10,17 @@
 ## Стек
 
 - **Backend:** Python 3.12, Flask 3, psycopg 3, Gunicorn.
-- **База:** PostgreSQL 17 (локально — portable-сборка, в продакшене — Neon).
+- **База:** PostgreSQL 17 (локально — portable-сборка, в продакшене — Supabase).
 - **Frontend:** чистые HTML/CSS/JS без сборщика; шрифты Comfortaa/Manrope лежат в репозитории.
 - **Тесты:** pytest (31 тест), Playwright + Edge для e2e и скриншотов.
-- **Деплой:** GitHub Pages (статика) + Render Free (Flask) + Neon Free (PostgreSQL).
+- **Деплой:** GitHub Pages (статика) + Vercel (Flask API) + Supabase (PostgreSQL).
 
 GitHub Pages умеет отдавать только статические файлы, поэтому Python-бэкенд живёт отдельно на
-Render, а фронтенд обращается к нему по `apiBase` из `frontend/js/config.js`.
+Vercel, а фронтенд обращается к нему по `apiBase` из `frontend/js/config.js`.
+
+- Сайт: <https://rikkahatsune.github.io/cookiekub/>
+- API: <https://cookiekub.vercel.app/api/health>
+- Исходники: <https://github.com/RikkaHatsune/cookiekub>
 
 ## Демо-доступы
 
@@ -53,9 +57,11 @@ Render, а фронтенд обращается к нему по `apiBase` из
 - [Архитектура и безопасность](docs/architecture/cookiekub-architecture.html)
 - [ERD: 11 таблиц PostgreSQL](docs/architecture/cookiekub-erd.html)
 - [Жизненный цикл заказа](docs/architecture/cookiekub-order-lifecycle.html)
+- [Путь пользователя: вход → заказ → удаление](docs/architecture/cookiekub-user-journey.html)
+- [Как всё работает: запросы, данные, токены](docs/HOW_IT_WORKS.md)
 - [SQL-дамп схемы](docs/schema.sql)
 
-Кратко: браузер → GitHub Pages (статика) → Flask API на Render → PostgreSQL на Neon.
+Кратко: браузер → GitHub Pages (статика) → Flask API на Vercel → PostgreSQL в Supabase.
 Гость заказывает без входа, но указывает email; пользователь видит заказы в кабинете.
 Админка защищена ролью на API, а не «скрытой ссылкой».
 
@@ -167,11 +173,15 @@ python scripts/final_screenshots.py
 Подробная пошаговая инструкция — [docs/DEPLOY.md](docs/DEPLOY.md). Кратко:
 
 1. Создать публичный репозиторий GitHub и включить Pages через Actions.
-2. Создать бесплатную БД Neon и скопировать **pooled** connection string с `sslmode=require`.
-3. Создать Render Web Service из `render.yaml`, задать `DATABASE_URL`, `CORS_ORIGINS`.
-4. В `frontend/js/config.js` указать фактический URL Render, если он отличается от
-   `https://cookiekub-api.onrender.com`.
-5. Запушить в `main`: workflow `pages.yml` соберёт `frontend/` и опубликует сайт.
+2. Создать проект Supabase и применить миграции/seed по `DATABASE_URL` (Session pooler,
+   `sslmode=require`).
+3. Импортировать репозиторий в Vercel, Root Directory `./`, preset Flask, задать env:
+   `DATABASE_URL`, `SECRET_KEY`, `MAINTENANCE_TOKEN`, `CORS_ORIGINS` и остальные из
+   [docs/DEPLOY.md](docs/DEPLOY.md).
+4. В `frontend/js/config.js` указать фактический URL API, если он отличается от
+   `https://cookiekub.vercel.app`.
+5. Запушить в `main`: workflow `pages.yml` соберёт `frontend/` и опубликует сайт, Vercel
+   пересоберёт API.
 
 ## Структура
 
@@ -192,7 +202,7 @@ scripts/            reset/e2e/screenshots/dev-проверки
 - Пароль нельзя восстановить по email — только обратиться в поддержку (симуляция).
 - Заказ становится «Выполнен» лениво: при открытии страницы/запросе списка после 60 секунд,
   либо кнопкой администратора.
-- Render Free засыпает через ~15 минут; первый запрос может занять до минуты. Workflow
-  `keepalive.yml` пингует health каждые 10 минут, но GitHub может задерживать расписание.
+- Vercel Free: serverless-функции имеют холодный старт; первый запрос после простоя может быть
+  медленнее. Supabase Free может уходить в паузу при простое.
 
 © 2026 CookieKub. Учебный проект.

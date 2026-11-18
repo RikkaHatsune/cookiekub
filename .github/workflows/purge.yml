@@ -20,4 +20,4 @@ jobs:
           curl --fail --silent --show-error --max-time 60 \
             -X POST \
             -H "X-Maintenance-Token: $MAINTENANCE_TOKEN" \
-            https://cookiekub-api.onrender.com/api/maintenance/purge
+            https://cookiekub.vercel.app/api/maintenance/purge

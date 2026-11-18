@@ -17,6 +17,9 @@ postgres-data/
 
 # Archify working directories and raw check logs
 .archify/
+docs/architecture/*.finalize*.json
+docs/architecture/*.browser-check.json
+docs/architecture/*.delivery.json
 
 # OS / editors
 .DS_Store

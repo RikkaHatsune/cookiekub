@@ -12,4 +12,4 @@ jobs:
       - name: Ping health endpoint
         run: |
           curl --fail --silent --show-error --max-time 30 \
-            https://cookiekub-api.onrender.com/api/health
+            https://cookiekub.vercel.app/api/health
